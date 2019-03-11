@@ -11,9 +11,9 @@ def load_data(filepath):
     return words_list
 
 
-def get_most_frequent_words(text):
+def get_most_frequent_words(text, number_of_words):
     counter = Counter(text)
-    return [elem[0] for elem in counter.most_common(10)]
+    return [elem[0] for elem in counter.most_common(number_of_words)]
 
 
 if __name__ == '__main__':
@@ -23,5 +23,7 @@ if __name__ == '__main__':
         print('Не указан путь к файлу')
         exit()
 
+    number_of_words = 10
     print('Десять самых популярных слов в тексте:')
-    print(*get_most_frequent_words(load_data(filepath)), sep=', ')
+    print(*get_most_frequent_words(load_data(filepath), number_of_words),
+          sep=', ')
